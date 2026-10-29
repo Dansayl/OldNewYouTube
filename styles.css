@@ -1,0 +1,122 @@
+/**
+ * OldNewYouTube — Таблица стилей
+ * Управляется через атрибуты html[data-oldnewyt-enabled="true"]
+ */
+
+/* 1. Страница просмотра 2025: скрываем боковую панель 2026 (.ytSideRailViewModelHost) и фиксируем классический колоночный вид */
+html[data-oldnewyt-enabled="true"][data-oldnewyt-watch="true"] .ytSideRailViewModelHost,
+html[data-oldnewyt-enabled="true"][data-oldnewyt-watch="true"] ytd-watch-flexy #panels.ytd-watch-flexy > ytd-engagement-panel-section-list-renderer[target-id="engagement-panel-structured-description"]:not([visibility="ENGAGEMENT_PANEL_VISIBILITY_EXPANDED"]) {
+  display: none !important;
+}
+
+html[data-oldnewyt-enabled="true"][data-oldnewyt-watch="true"] ytd-watch-flexy[flexy] #primary.ytd-watch-flexy {
+  min-width: 0 !important;
+}
+
+html[data-oldnewyt-enabled="true"][data-oldnewyt-watch="true"] ytd-watch-flexy[flexy] #secondary.ytd-watch-flexy {
+  display: block !important;
+}
+
+/* 2. Классический плеер 2025 (отключение полноэкранной сетки Delhi и плавающих кнопок-капсул) */
+html[data-oldnewyt-enabled="true"][data-oldnewyt-player="true"] .ytp-fullscreen-grid,
+html[data-oldnewyt-enabled="true"][data-oldnewyt-player="true"] .ytp-fullscreen-quick-actions,
+html[data-oldnewyt-enabled="true"][data-oldnewyt-player="true"] .ytp-ce-hide-button-container {
+  display: none !important;
+}
+
+html[data-oldnewyt-enabled="true"][data-oldnewyt-player="true"] #movie_player.ytp-delhi-modern {
+  --ytp-grid-scroll-percentage: 0 !important;
+}
+
+html[data-oldnewyt-enabled="true"][data-oldnewyt-player="true"] .ytp-delhi-modern.ytp-grid-scrolling .ytp-chrome-bottom {
+  bottom: 0 !important;
+  opacity: 1 !important;
+}
+
+html[data-oldnewyt-enabled="true"][data-oldnewyt-player="true"] .ytp-delhi-modern .ytp-left-controls,
+html[data-oldnewyt-enabled="true"][data-oldnewyt-player="true"] .ytp-delhi-modern .ytp-right-controls,
+html[data-oldnewyt-enabled="true"][data-oldnewyt-player="true"] .ytp-delhi-modern .ytp-right-controls-left,
+html[data-oldnewyt-enabled="true"][data-oldnewyt-player="true"] .ytp-delhi-modern .ytp-right-controls-right {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+html[data-oldnewyt-enabled="true"] ytd-watch-flexy[fullscreen] #oldnewyt-miniplayer-button {
+  display: none !important;
+}
+
+/* 3. Классическая красная полоса прогресса (вместо розово-малинового градиента) */
+html[data-oldnewyt-enabled="true"][data-oldnewyt-redbar="true"] .ytp-play-progress,
+html[data-oldnewyt-enabled="true"][data-oldnewyt-redbar="true"] #progress.ytd-thumbnail-overlay-resume-playback-renderer,
+html[data-oldnewyt-enabled="true"][data-oldnewyt-redbar="true"] .thumbnail-overlay-resume-playback-progress,
+html[data-oldnewyt-enabled="true"][data-oldnewyt-redbar="true"] .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment,
+html[data-oldnewyt-enabled="true"][data-oldnewyt-redbar="true"] .ytChapteredProgressBarChapteredPlayerBarChapterSeen,
+html[data-oldnewyt-enabled="true"][data-oldnewyt-redbar="true"] .ytChapteredProgressBarChapteredPlayerBarFill,
+html[data-oldnewyt-enabled="true"][data-oldnewyt-redbar="true"] .ytProgressBarLineProgressBarPlayed,
+html[data-oldnewyt-enabled="true"][data-oldnewyt-redbar="true"] #progress.yt-page-navigation-progress,
+html[data-oldnewyt-enabled="true"][data-oldnewyt-redbar="true"] .progress-bar-played.ytd-progress-bar-line {
+  background: #ff0033 !important;
+}
+
+html[data-oldnewyt-enabled="true"][data-oldnewyt-redbar="true"] .ytp-scrubber-button {
+  background: #ff0033 !important;
+}
+
+/* 4. Настройка количества видео в ряд на Главной и в Подписках */
+html[data-oldnewyt-enabled="true"][data-oldnewyt-grid="3"] ytd-browse:is([page-subtype="home"], [page-subtype="subscriptions"]) ytd-rich-grid-renderer {
+  --ytd-rich-grid-items-per-row: 3 !important;
+}
+
+html[data-oldnewyt-enabled="true"][data-oldnewyt-grid="4"] ytd-browse:is([page-subtype="home"], [page-subtype="subscriptions"]) ytd-rich-grid-renderer {
+  --ytd-rich-grid-items-per-row: 4 !important;
+}
+
+html[data-oldnewyt-enabled="true"][data-oldnewyt-grid="5"] ytd-browse:is([page-subtype="home"], [page-subtype="subscriptions"]) ytd-rich-grid-renderer {
+  --ytd-rich-grid-items-per-row: 5 !important;
+}
+
+html[data-oldnewyt-enabled="true"][data-oldnewyt-grid="6"] ytd-browse:is([page-subtype="home"], [page-subtype="subscriptions"]) ytd-rich-grid-renderer {
+  --ytd-rich-grid-items-per-row: 6 !important;
+}
+
+/* 5. Компактные превью в результатах поиска */
+html[data-oldnewyt-enabled="true"][data-oldnewyt-search-thumb="medium"] ytd-search ytd-video-renderer ytd-thumbnail.ytd-video-renderer,
+html[data-oldnewyt-enabled="true"][data-oldnewyt-search-thumb="medium"] ytd-search yt-lockup-view-model .yt-lockup-view-model__content-image,
+html[data-oldnewyt-enabled="true"][data-oldnewyt-search-thumb="medium"] ytd-search ytd-channel-renderer #avatar-section {
+  max-width: 380px !important;
+}
+
+html[data-oldnewyt-enabled="true"][data-oldnewyt-search-thumb="small"] ytd-search ytd-video-renderer ytd-thumbnail.ytd-video-renderer,
+html[data-oldnewyt-enabled="true"][data-oldnewyt-search-thumb="small"] ytd-search yt-lockup-view-model .yt-lockup-view-model__content-image,
+html[data-oldnewyt-enabled="true"][data-oldnewyt-search-thumb="small"] ytd-search ytd-channel-renderer #avatar-section {
+  max-width: 320px !important;
+}
+
+/* 6. Скрытие ИИ-сводки под видео и кнопки Ask AI */
+html[data-oldnewyt-enabled="true"][data-oldnewyt-hide-ai="true"] ytd-expandable-metadata-renderer[has-video-summary],
+html[data-oldnewyt-enabled="true"][data-oldnewyt-hide-ai="true"] #flexible-item-buttons button[aria-label^="Ask" i],
+html[data-oldnewyt-enabled="true"][data-oldnewyt-hide-ai="true"] ytd-menu-renderer button[aria-label^="Ask" i],
+html[data-oldnewyt-enabled="true"][data-oldnewyt-hide-ai="true"] #flexible-item-buttons button[aria-label*="Спросить" i],
+html[data-oldnewyt-enabled="true"][data-oldnewyt-hide-ai="true"] ytd-menu-renderer button[aria-label*="Спросить" i] {
+  display: none !important;
+}
+
+/* 7. Опциональное скрытие блоков YouTube Shorts */
+html[data-oldnewyt-enabled="true"][data-oldnewyt-hide-shorts="true"] ytd-rich-section-renderer:has(> #content > ytd-rich-shelf-renderer[is-shorts]),
+html[data-oldnewyt-enabled="true"][data-oldnewyt-hide-shorts="true"] ytd-reel-shelf-renderer,
+html[data-oldnewyt-enabled="true"][data-oldnewyt-hide-shorts="true"] ytd-rich-item-renderer[is-slim-media][rendered-from-rich-grid],
+html[data-oldnewyt-enabled="true"][data-oldnewyt-hide-shorts="true"] ytd-guide-entry-renderer:has(> a[title="Shorts"]),
+html[data-oldnewyt-enabled="true"][data-oldnewyt-hide-shorts="true"] ytd-mini-guide-entry-renderer[aria-label="Shorts"],
+html[data-oldnewyt-enabled="true"][data-oldnewyt-hide-shorts="true"] #related ytd-compact-video-renderer:has(a[href^="/shorts"]) {
+  display: none !important;
+}
+
+/* 8. Аккуратные скругления карточек и плеера */
+html[data-oldnewyt-enabled="true"][data-oldnewyt-corners="true"] ytd-watch-flexy #ytd-player.ytd-watch-flexy,
+html[data-oldnewyt-enabled="true"][data-oldnewyt-corners="true"] ytd-thumbnail a.ytd-thumbnail,
+html[data-oldnewyt-enabled="true"][data-oldnewyt-corners="true"] .yt-thumbnail-view-model--medium,
+html[data-oldnewyt-enabled="true"][data-oldnewyt-corners="true"] .yt-thumbnail-view-model--large {
+  border-radius: 6px !important;
+}

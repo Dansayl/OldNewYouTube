@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>OldNewYouTube</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="header">
+    <div class="logo-row">
+      <img src="icons/icon48.png" alt="Logo" class="logo-icon">
+      <div>
+        <h1>OldNewYouTube</h1>
+        <p class="subtitle">Классический дизайн YouTube</p>
+      </div>
+    </div>
+    <label class="switch master-switch" title="Включить или выключить расширение">
+      <input type="checkbox" id="enabled">
+      <span class="slider"></span>
+    </label>
+  </header>
+
+  <main class="settings-list" id="settings-container">
+    <div class="section-title">Страница видео и плеер</div>
+
+    <label class="setting-item">
+      <div class="setting-info">
+        <span class="setting-name">Комментарии под видео</span>
+        <span class="setting-desc">Возвращает описание и комментарии вниз, рекомендации вправо и чинит режим кинотеатра</span>
+      </div>
+      <div class="switch">
+        <input type="checkbox" id="watchLayout2025">
+        <span class="slider"></span>
+      </div>
+    </label>
+
+    <label class="setting-item">
+      <div class="setting-info">
+        <span class="setting-name">Классический плеер (до Delhi UI)</span>
+        <span class="setting-desc">Отключает новый интерфейс плеера и навязчивую сетку в полном экране</span>
+      </div>
+      <div class="switch">
+        <input type="checkbox" id="classicPlayer2025">
+        <span class="slider"></span>
+      </div>
+    </label>
+
+    <label class="setting-item">
+      <div class="setting-info">
+        <span class="setting-name">Красная полоса прогресса</span>
+        <span class="setting-desc">Убирает розово-малиновый градиент полосы воспроизведения</span>
+      </div>
+      <div class="switch">
+        <input type="checkbox" id="redProgressBar">
+        <span class="slider"></span>
+      </div>
+    </label>
+
+    <label class="setting-item">
+      <div class="setting-info">
+        <span class="setting-name">Кнопка мини-плеера</span>
+        <span class="setting-desc">Возвращает иконку мини-проигрывателя на нижнюю панель</span>
+      </div>
+      <div class="switch">
+        <input type="checkbox" id="restoreMiniplayer">
+        <span class="slider"></span>
+      </div>
+    </label>
+
+    <div class="section-title">Сетка и элементы страницы</div>
+
+    <div class="setting-item">
+      <div class="setting-info">
+        <span class="setting-name">Видео в ряд на Главной</span>
+        <span class="setting-desc">Фиксирует размер сетки вместо гигантских карточек</span>
+      </div>
+      <select id="gridColumns" class="select-box">
+        <option value="auto">Авто</option>
+        <option value="3">3 в ряд</option>
+        <option value="4">4 в ряд (Классика)</option>
+        <option value="5">5 в ряд</option>
+        <option value="6">6 в ряд</option>
+      </select>
+    </div>
+
+    <div class="setting-item">
+      <div class="setting-info">
+        <span class="setting-name">Размер превью в поиске</span>
+        <span class="setting-desc">Уменьшает огромные миниатюры в выдаче поиска</span>
+      </div>
+      <select id="searchThumbSize" class="select-box">
+        <option value="large">Крупные</option>
+        <option value="medium">Средние (Стандарт)</option>
+        <option value="small">Компактные</option>
+      </select>
+    </div>
+
+    <label class="setting-item">
+      <div class="setting-info">
+        <span class="setting-name">Скрыть ИИ-пересказ и «Спросить»</span>
+        <span class="setting-desc">Убирает блоки нейросетевого описания под роликом</span>
+      </div>
+      <div class="switch">
+        <input type="checkbox" id="hideAiSummary">
+        <span class="slider"></span>
+      </div>
+    </label>
+
+    <label class="setting-item">
+      <div class="setting-info">
+        <span class="setting-name">Скрыть полки Shorts</span>
+        <span class="setting-desc">Прячет блоки коротких видео на главной и в поиске</span>
+      </div>
+      <div class="switch">
+        <input type="checkbox" id="hideShorts">
+        <span class="slider"></span>
+      </div>
+    </label>
+
+    <label class="setting-item">
+      <div class="setting-info">
+        <span class="setting-name">Умеренные скругления (6px)</span>
+        <span class="setting-desc">Делает углы плеера и превью менее закругленными</span>
+      </div>
+      <div class="switch">
+        <input type="checkbox" id="classicCorners">
+        <span class="slider"></span>
+      </div>
+    </label>
+
+    <!-- Блок добровольного пожертвования / доната -->
+    <div class="donate-banner" id="open-donate-btn">
+      <div class="donate-banner-icon">☕</div>
+      <div class="donate-banner-text">
+        <div class="donate-banner-title">Поддержать автора OldNewYouTube</div>
+        <div class="donate-banner-sub">Нравится классический дизайн? Угостите автора кофе!</div>
+      </div>
+      <div class="donate-arrow">→</div>
+    </div>
+  </main>
+
+  <!-- Модальное окно пожертвований -->
+  <div class="donate-modal-overlay" id="donate-modal" style="display: none;">
+    <div class="donate-modal">
+      <div class="donate-modal-header">
+        <div class="donate-modal-title">☕ Поддержка OldNewYouTube</div>
+        <button class="close-modal-btn" id="close-donate-btn" type="button">✕</button>
+      </div>
+
+      <p class="donate-intro">
+        Расширение создано для людей, полностью бесплатно и не содержит рекламы. Ваша поддержка помогает регулярно обновлять селекторы и сохранять удобный дизайн YouTube.
+      </p>
+
+      <div class="donate-chips-row">
+        <a class="chip-btn" href="https://pay.cloudtips.ru/p/41588f5e" target="_blank">100 ₽<br><small>Кофе</small></a>
+        <a class="chip-btn active" href="https://pay.cloudtips.ru/p/41588f5e" target="_blank">250 ₽<br><small>Пицца</small></a>
+        <a class="chip-btn" href="https://pay.cloudtips.ru/p/41588f5e" target="_blank">500 ₽<br><small>Сервер</small></a>
+      </div>
+
+      <div class="donate-links-list">
+        <!-- Прямая ссылка автора на CloudTips (СБП и карты) -->
+        <a id="donate-primary-link" href="https://pay.cloudtips.ru/p/41588f5e" target="_blank" class="donate-pay-btn cloudtips-btn">
+          <span class="pay-btn-icon">💳</span>
+          <span>Оплатить через CloudTips (СБП / Карты)</span>
+        </a>
+      </div>
+
+      <details class="custom-link-details">
+        <summary class="custom-link-summary">⚙️ Ссылка автора</summary>
+        <div class="custom-link-box">
+          <div class="custom-link-label">Текущая ссылка для приёма пожертвований:</div>
+          <div class="custom-link-input-row">
+            <input type="url" id="custom-donate-url" value="https://pay.cloudtips.ru/p/41588f5e" class="custom-url-input">
+            <button id="save-donate-url-btn" type="button" class="save-url-btn">Сохранить</button>
+          </div>
+          <span id="donate-url-status" class="url-saved-status"></span>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <span id="status-msg" class="status-msg">Настройки применяются автоматически</span>
+    <button id="reload-btn" class="reload-btn" type="button">Обновить вкладку</button>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>
